@@ -40,7 +40,7 @@ module.exports = {
      * @param {string} score Score the player achieved.
      */
     logScore(score) {
-        window.Wortal.analytics.logScore(level);
+        window.Wortal.analytics.logScore(score);
     },
 
     /**
@@ -63,7 +63,7 @@ module.exports = {
      * @param {boolean} wasCompleted Was the tutorial completed.
      */
     logTutorialEnd(tutorial, wasCompleted) {
-        window.Wortal.analytics.logTutorialEnd(tutorial), wasCompleted;
+        window.Wortal.analytics.logTutorialEnd(tutorial, wasCompleted);
     },
 
     /**
