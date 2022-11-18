@@ -1,0 +1,7 @@
+The demo will initially show warnings for a missing script on the Script_ButtonHandler node.
+This is possibly due to the UUID and/or class ID changing on import.
+
+To resolve this:
+1. Remove the missing script from Script_ButtonHandler
+2. Add Custom Component -> DemoButtonHandler
+3. Assign the references for the buttons

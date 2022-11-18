@@ -1,0 +1,9 @@
+### JS
+node_modules/
+
+### IDE
+.vs/
+.vscode/
+.vsconfig
+.idea/
+*.iml
