@@ -121,7 +121,9 @@ cc.Class({
     },
 
     callContextChoose() {
-        wortal.context.chooseAsync("Let's play!", this.createImg(256, 256), {
+        wortal.context.chooseAsync({
+            image: this.createImg(256, 256),
+            text: "Let's play!",
             caption: "Play",
         })
             .then(() => this.log("New context: " + wortal.context.getId()))
@@ -129,19 +131,21 @@ cc.Class({
     },
 
     callContextSwitch() {
-        wortal.context.switchAsync("CdJolqohlZa8mKEpWn4K0ibg")
+        wortal.context.switchAsync("some-player-id")
             .then(() => this.log(wortal.context.getId()))
             .catch(error => this.log(error));
     },
 
     callContextCreate() {
-        wortal.context.createAsync("3")
+        wortal.context.createAsync("some-player-id")
             .then(() => this.log(wortal.context.getId()))
             .catch(error => this.log(error));
     },
 
     callContextShare() {
-        wortal.context.shareAsync("Let's play!", this.createImg(1200, 1200), {
+        wortal.context.shareAsync({
+            image: this.createImg(1200, 1200),
+            text: "Let's play!",
             intent: "REQUEST",
             caption: "Play",
         })
@@ -150,7 +154,9 @@ cc.Class({
     },
 
     callContextUpdate() {
-        wortal.context.updateAsync("We played!", this.createImg(256, 256), {
+        wortal.context.updateAsync({
+            image: this.createImg(256, 256),
+            text: "We played!",
             caption: "Play",
             data: {game: "da test"},
         })
