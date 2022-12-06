@@ -185,7 +185,7 @@ cc.Class({
     },
 
     callIAPBuy() {
-        wortal.iap.makePurchaseAsync({productID: "jp.rgames.wortalsdktest.purchase.llama_pack_1.test"})
+        wortal.iap.makePurchaseAsync({productID: "some.product.id"})
             .then(receipt => {
                 this.log(receipt.paymentID);
                 this.log(receipt.purchaseToken);
