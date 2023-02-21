@@ -21,4 +21,14 @@ module.exports = {
     player,
     /** Session API */
     session,
+
+    /**
+     * Registers a callback for when the game is paused via platform SDK.
+     * @param callback
+     */
+    onPause(callback) {
+        window.Wortal.onPause(() => {
+            callback();
+        });
+    }
 }

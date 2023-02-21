@@ -1,5 +1,5 @@
 {
-  "version": "2.1.0",
+  "version": "2.2.0",
   "name": "wortal-sdk-2x",
   "description": "Extension for the Wortal SDK to deploy games on the Digital Will Wortal.",
   "main": "./main.js",
