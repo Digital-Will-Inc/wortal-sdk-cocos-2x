@@ -15,9 +15,15 @@ module.exports = {
      * @param {string} description Description of the placement.
      * @param {function} beforeAd Callback for before the ad is shown. Pause the game here.
      * @param {function} afterAd Callback for after the ad is shown. Resume the game here.
+     * @param {function} noFill Callback for when the ad is not filled. This can happen if the platform has no ads to show or if the
+     * rate limit has been reached. If this is not provided, the afterAd callback will be used.
+     * @throws {ErrorMessage} See error.message for details.
+     * <ul>
+     * <li>INVALID_PARAM</li>
+     * </ul>
      */
-    showInterstitial(placement, description, beforeAd, afterAd) {
-        window.Wortal.ads.showInterstitial(placement, description, beforeAd, afterAd);
+    showInterstitial(placement, description, beforeAd, afterAd, noFill) {
+        window.Wortal.ads.showInterstitial(placement, description, beforeAd, afterAd, noFill);
     },
 
     /**
@@ -34,9 +40,15 @@ module.exports = {
      * @param {function} afterAd Callback for after the ad is shown. Resume the game here.
      * @param {function} adDismissed Callback for when the player dismissed the ad. Do not reward the player.
      * @param {function} adViewed Callback for when the player has successfully watched the ad. Reward the player here.
+     * @param {function} noFill Callback for when the ad is not filled. This can happen if the platform has no ads to show or if the
+     * rate limit has been reached. If this is not provided, the afterAd callback will be used.
+     * @throws {ErrorMessage} See error.message for details.
+     * <ul>
+     * <li>INVALID_PARAM</li>
+     * </ul>
      */
-    showRewarded(description, beforeAd, afterAd, adDismissed, adViewed) {
-        window.Wortal.ads.showRewarded(description, beforeAd, afterAd, adDismissed, adViewed);
+    showRewarded(description, beforeAd, afterAd, adDismissed, adViewed, noFill) {
+        window.Wortal.ads.showRewarded(description, beforeAd, afterAd, adDismissed, adViewed, noFill);
     },
 
     /**
