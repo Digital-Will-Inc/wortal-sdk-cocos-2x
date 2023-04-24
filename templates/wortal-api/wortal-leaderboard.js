@@ -5,48 +5,82 @@ module.exports = {
      * wortal.leaderboard.getLeaderboardAsync('global')
      *  .then(leaderboard => console.log(leaderboard.name());
      * @param {string} name Name of the leaderboard.
-     * @returns Promise<Leaderboard>
+     * @returns {Promise<Leaderboard>} A promise that resolves with the matching leaderboard, rejecting if one is not found.
+     * @throws {ErrorMessage} See error.message for details.
+     * <ul>
+     * <li>NOT_SUPPORTED</li>
+     * <li>LEADERBOARD_NOT_FOUND</li>
+     * <li>NETWORK_FAILURE</li>
+     * <li>CLIENT_UNSUPPORTED_OPERATION</li>
+     * <li>INVALID_OPERATION</li>
+     * <li>INVALID_PARAM</li>
+     * </ul>
      */
     getLeaderboardAsync(name) {
         return window.Wortal.leaderboard.getLeaderboardAsync(name);
     },
 
     /**
-     * Sends an entry to be added to the leaderboard, or updated if already existing. Will only update if the score
-     * is a higher than the player's previous entry.
+     * Updates the player's score. If the player has an existing score, the old score will only be replaced if the new
+     * score is better than it. NOTE: If the leaderboard is associated with a specific context, the game must be in that
+     * context to set a score for the player.
      * @example
      * wortal.leaderboard.sendEntryAsync('global', 100);
      * @param {string} name Name of the leaderboard.
      * @param {number} score Score for the entry.
      * @param {string} details Optional additional details about the entry.
-     * @returns {Promise<LeaderboardEntry>} The new entry if one was created, updated entry if the score is higher, or the old entry if no new
-     * high score was achieved.
+     * @returns {Promise<LeaderboardEntry>} Resolves with the current leaderboard entry for the player after the update.
+     * @throws {ErrorMessage} See error.message for details.
+     * <ul>
+     * <li>NOT_SUPPORTED</li>
+     * <li>LEADERBOARD_WRONG_CONTEXT</li>
+     * <li>NETWORK_FAILURE</li>
+     * <li>CLIENT_UNSUPPORTED_OPERATION</li>
+     * <li>INVALID_PARAM</li>
+     * <li>INVALID_OPERATION</li>
+     * <li>RATE_LIMITED</li>
+     * </ul>
      */
     sendEntryAsync(name, score, details = "") {
         return window.Wortal.leaderboard.sendEntryAsync(name, score, details);
     },
 
     /**
-     * Gets a list of leaderboard entries in the leaderboard.
+     * Retrieves a set of leaderboard entries, ordered by score ranking in the leaderboard.
      * @example
      * wortal.leaderboard.getEntriesAsync('global', 10)
      *  .then(entries => console.log(entries);
      * @param {string} name Name of the leaderboard.
      * @param {number} count Number of entries to get.
      * @param {number} offset Offset from the first entry (top rank) to start the count from. Default is 0.
-     * @returns {Promise<LeaderboardEntry[]>} Array of LeaderboardEntry.
+     * @returns {Promise<LeaderboardEntry[]>} Resolves with the leaderboard entries that match the query.
+     * @throws {ErrorMessage} See error.message for details.
+     * <ul>
+     * <li>NOT_SUPPORTED</li>
+     * <li>INVALID_PARAM</li>
+     * <li>NETWORK_FAILURE</li>
+     * <li>RATE_LIMITED</li>
+     * </ul>
      */
     getEntriesAsync(name, count, offset = 0) {
         return window.Wortal.leaderboard.getEntriesAsync(name, count, offset);
     },
 
     /**
-     * Gets the player's entry in the leaderboard.
+     * Retrieves the leaderboard's entry for the current player, or null if the player has not set one yet.
      * @example
      * wortal.leaderboard.getPlayerEntryAsync('global')
      *  .then(entry => console.log(entry.rank());
      * @param {string} name Name of the leaderboard.
-     * @returns {Promise<LeaderboardEntry>} LeaderboardEntry for the player.
+     * @returns {Promise<LeaderboardEntry>} Resolves with the current leaderboard entry for the player.
+     * @throws {ErrorMessage} See error.message for details.
+     * <ul>
+     * <li>NOT_SUPPORTED</li>
+     * <li>INVALID_PARAM</li>
+     * <li>INVALID_OPERATION</li>
+     * <li>NETWORK_FAILURE</li>
+     * <li>RATE_LIMITED</li>
+     * </ul>
      */
     getPlayerEntryAsync(name) {
         return window.Wortal.leaderboard.getPlayerEntryAsync(name);
@@ -59,19 +93,35 @@ module.exports = {
      *  .then(entries => console.log(entries);
      * @param {string} name Name of the leaderboard.
      * @returns {Promise<number>} Number of entries.
+     * @throws {ErrorMessage} See error.message for details.
+     * <ul>
+     * <li>NOT_SUPPORTED</li>
+     * <li>INVALID_PARAM</li>
+     * <li>NETWORK_FAILURE</li>
+     * <li>RATE_LIMITED</li>
+     * </ul>
      */
     getEntryCountAsync(name) {
         return window.Wortal.leaderboard.getEntryCountAsync(name);
     },
 
     /**
-     * Gets a list of leaderboard entries of connected players in the leaderboard.
+     * Retrieves the leaderboard score entries of the current player's connected players (including the current player),
+     * ordered by local rank within the set of connected players.
+     * @example
      * wortal.leaderboard.getConnectedPlayersEntriesAsync('global')
      *  .then(entries => console.log(entries);
      * @param {string} name Name of the leaderboard.
      * @param {number} count Number of entries to get.
      * @param {number} offset Offset from the first entry (top rank) to start the count from. Default is 0.
-     * @returns {Promise<LeaderboardEntry[]>} Array of LeaderboardEntry.
+     * @returns {Promise<LeaderboardEntry[]>} Resolves with the leaderboard entries that match the query.
+     * @throws {ErrorMessage} See error.message for details.
+     * <ul>
+     * <li>NOT_SUPPORTED</li>
+     * <li>INVALID_PARAM</li>
+     * <li>NETWORK_FAILURE</li>
+     * <li>RATE_LIMITED</li>
+     * </ul>
      */
     getConnectedPlayersEntriesAsync(name, count, offset) {
         return window.Wortal.leaderboard.getConnectedPlayersEntriesAsync(name, count, offset);
