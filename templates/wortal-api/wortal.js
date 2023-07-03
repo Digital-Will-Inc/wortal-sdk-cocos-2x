@@ -3,6 +3,7 @@ import * as analytics from './api/analytics';
 import * as context from './api/context';
 import * as iap from './api/iap';
 import * as leaderboard from './api/leaderboard';
+import * as notifications from './api/notifications';
 import * as player from './api/player';
 import * as session from './api/session';
 
@@ -17,6 +18,8 @@ module.exports = {
     iap,
     /** Leaderboard API */
     leaderboard,
+    /** Notifications API */
+    notifications,
     /** Player API */
     player,
     /** Session API */
