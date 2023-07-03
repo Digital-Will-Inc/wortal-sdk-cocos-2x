@@ -44,5 +44,18 @@ module.exports = {
      */
     performHapticFeedbackAsync() {
         return window.Wortal.performHapticFeedbackAsync();
+    },
+
+    /**
+     * Gets the supported APIs for the current platform.
+     * @example
+     * const supportedAPIs = Wortal.getSupportedAPIs();
+     * if (supportedAPIs.includes("context.shareAsync")) {
+     *    shareWithFriendsDialog.show();
+     * }
+     * @returns {string[]} Array of supported APIs.
+     */
+    getSupportedAPIs() {
+        return window.Wortal.getSupportedAPIs();
     }
 }
