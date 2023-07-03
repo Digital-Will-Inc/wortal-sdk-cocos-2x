@@ -49,7 +49,7 @@ module.exports = {
     /**
      * Gets the supported APIs for the current platform.
      * @example
-     * const supportedAPIs = Wortal.getSupportedAPIs();
+     * const supportedAPIs = wortal.getSupportedAPIs();
      * if (supportedAPIs.includes("context.shareAsync")) {
      *    shareWithFriendsDialog.show();
      * }
