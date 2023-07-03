@@ -23,12 +23,26 @@ module.exports = {
     session,
 
     /**
-     * Registers a callback for when the game is paused via platform SDK.
-     * @param callback
+     * Sets a callback which will be invoked when the app is brought to the background.
+     * @param callback Callback to invoke.
      */
     onPause(callback) {
         window.Wortal.onPause(() => {
             callback();
         });
+    },
+
+    /**
+     * Requests and performs haptic feedback on supported devices.
+     * @returns {Promise<void>} Haptic feedback requested successfully
+     * @throws {ErrorMessage} See error.message for details.
+     * <ul>
+     * <li>NOT_SUPPORTED</li>
+     * <li>CLIENT_UNSUPPORTED_OPERATION</li>
+     * <li>INVALID_OPERATION</li>
+     * </ul>
+     */
+    performHapticFeedbackAsync() {
+        return window.Wortal.performHapticFeedbackAsync();
     }
 }
