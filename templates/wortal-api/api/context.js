@@ -39,7 +39,7 @@ module.exports = {
      *    console.log(players[0].name);
      *    });
      * @returns {Promise<wortalPlayer[]>} Array of players in the current context.
-     * @throws {ErrorMessage} See error.message for details.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>NETWORK_FAILURE</li>
@@ -64,7 +64,7 @@ module.exports = {
      * })
      * @param {contextPayload} payload Object defining the options for the context choice.
      * @returns {Promise<void>} A promise that resolves with an array of player IDs of the players that were invited.
-     * @throws {ErrorMessage} See error.message for details.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>INVALID_PARAM</li>
@@ -92,7 +92,7 @@ module.exports = {
      * wortal.context.createAsync('player123');
      * @param {string} playerId ID of player to create a context with.
      * @returns {Promise<void>} A promise that resolves when the game has switched into the new context, or rejects otherwise.
-     * @throws {ErrorMessage} See error.message for details.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>INVALID_PARAM</li>
@@ -115,7 +115,7 @@ module.exports = {
      * wortal.context.switchAsync('abc123');
      * @param {string} contextId ID of the context to switch to.
      * @returns {Promise<void>} A promise that resolves when the game has switched into the specified context, or rejects otherwise.
-     * @throws {ErrorMessage} See error.message for details.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>INVALID_PARAM</li>
@@ -145,7 +145,7 @@ module.exports = {
      * }).then(result => console.log(result); // Contains shareCount with number of friends the share was sent to.
      * @param {contextPayload} payload Object defining the share message.
      * @returns {Promise<number>} Number of friends the message was shared with. Facebook will return 0.
-     * @throws {ErrorMessage} See error.message for details.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>INVALID_PARAM</li>
@@ -176,7 +176,7 @@ module.exports = {
      * .then(() => resumeGame);
      * @param payload Object defining the payload for the custom link.
      * @returns {Promise<void>} Promise that resolves when the dialog is closed.
-     * @throws {ErrorMessage} See error.message for details.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>INVALID_PARAM</li>
@@ -200,7 +200,7 @@ module.exports = {
      * });
      * @param {contextPayload} payload Object defining the update message.
      * @returns {Promise<void>} Promise that resolves when the update is sent.
-     * @throws {ErrorMessage} See error.message for details.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>INVALID_PARAM</li>
@@ -245,52 +245,4 @@ module.exports = {
      * @property {string | undefined} template Not used
      */
 
-    /**
-     * @typedef localizableContent
-     * @property {string} default Text will be used if not finding matching locale
-     * @property {Record<string, string>} localizations Key value pairs of localized strings
-     */
-
-    /**
-     * @typedef {string} contextFilter
-     * 'NEW_CONTEXT_ONLY'
-     * | 'INCLUDE_EXISTING_CHALLENGES'
-     * | 'NEW_PLAYERS_ONLY'
-     * | 'NEW_INVITATIONS_ONLY';
-     */
-
-    /**
-     * @typedef {string} contextType
-     * 'SOLO' | 'THREAD' | 'GROUP' | 'POST'
-     */
-    
-    /**
-     * @typedef {string} intent
-     * 'INVITE' | 'REQUEST' | 'CHALLENGE' | 'SHARE'
-     */
-
-    /**
-     * @typedef {string} ui
-     * 'DEFAULT' | 'MULTIPLE'
-     */
-
-    /**
-     * @typedef {string} strategy
-     * 'IMMEDIATE' | 'LAST' | 'IMMEDIATE_CLEAR'
-     */
-
-    /**
-     * @typedef {string} notifications
-     * 'NO_PUSH' | 'PUSH'
-     */
-
-    /**
-     * @typedef {string} shareDestination
-     * 'NEWSFEED' | 'GROUP' | 'COPY_LINK' | 'MESSENGER'
-     */
-
-    /**
-     * @typedef {string} action
-     * 'CUSTOM'
-     */
 }

@@ -19,7 +19,7 @@ module.exports = {
      * wortal.session.getEntryPointAsync()
      *  .then(entryPoint => console.log(entryPoint);
      * @returns {Promise<string>} The name of the entry point from which the user started the game
-     * @throws {ErrorMessage} See error.message for details.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>RETHROW_FROM_PLATFORM</li>
@@ -79,15 +79,4 @@ module.exports = {
     getPlatform() {
         return window.Wortal.session.getPlatform();
     }
-
-    /**
-     * @typedef trafficSource
-     * @property {string | undefined} ['utm_source']
-     * @property {string | undefined} ['r_entrypoint']
-     */
-
-    /**
-     * @typedef {string} platform
-     * 'wortal' | 'link' | 'viber' | 'gd' | 'facebook' | 'debug'
-     */
 }
