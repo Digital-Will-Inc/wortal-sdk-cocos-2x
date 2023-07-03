@@ -1,10 +1,10 @@
-import * as ads from './wortal-ads';
-import * as analytics from './wortal-analytics';
-import * as context from './wortal-context';
-import * as iap from './wortal-iap';
-import * as leaderboard from './wortal-leaderboard';
-import * as player from './wortal-player';
-import * as session from './wortal-session';
+import * as ads from './api/ads';
+import * as analytics from './api/analytics';
+import * as context from './api/context';
+import * as iap from './api/iap';
+import * as leaderboard from './api/leaderboard';
+import * as player from './api/player';
+import * as session from './api/session';
 
 module.exports = {
     /** Ads API */
@@ -35,7 +35,7 @@ module.exports = {
     /**
      * Requests and performs haptic feedback on supported devices.
      * @returns {Promise<void>} Haptic feedback requested successfully
-     * @throws {ErrorMessage} See error.message for details.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>CLIENT_UNSUPPORTED_OPERATION</li>
