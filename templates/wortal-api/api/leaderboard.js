@@ -5,8 +5,8 @@ module.exports = {
      * wortal.leaderboard.getLeaderboardAsync('global')
      *  .then(leaderboard => console.log(leaderboard.name());
      * @param {string} name Name of the leaderboard.
-     * @returns {Promise<Leaderboard>} A promise that resolves with the matching leaderboard, rejecting if one is not found.
-     * @throws {ErrorMessage} See error.message for details.
+     * @returns {Promise<leaderboard>} A promise that resolves with the matching leaderboard, rejecting if one is not found.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>LEADERBOARD_NOT_FOUND</li>
@@ -29,8 +29,8 @@ module.exports = {
      * @param {string} name Name of the leaderboard.
      * @param {number} score Score for the entry.
      * @param {string} details Optional additional details about the entry.
-     * @returns {Promise<LeaderboardEntry>} Resolves with the current leaderboard entry for the player after the update.
-     * @throws {ErrorMessage} See error.message for details.
+     * @returns {Promise<leaderboardEntry>} Resolves with the current leaderboard entry for the player after the update.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>LEADERBOARD_WRONG_CONTEXT</li>
@@ -53,8 +53,8 @@ module.exports = {
      * @param {string} name Name of the leaderboard.
      * @param {number} count Number of entries to get.
      * @param {number} offset Offset from the first entry (top rank) to start the count from. Default is 0.
-     * @returns {Promise<LeaderboardEntry[]>} Resolves with the leaderboard entries that match the query.
-     * @throws {ErrorMessage} See error.message for details.
+     * @returns {Promise<leaderboardEntry[]>} Resolves with the leaderboard entries that match the query.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>INVALID_PARAM</li>
@@ -72,8 +72,8 @@ module.exports = {
      * wortal.leaderboard.getPlayerEntryAsync('global')
      *  .then(entry => console.log(entry.rank());
      * @param {string} name Name of the leaderboard.
-     * @returns {Promise<LeaderboardEntry>} Resolves with the current leaderboard entry for the player.
-     * @throws {ErrorMessage} See error.message for details.
+     * @returns {Promise<leaderboardEntry>} Resolves with the current leaderboard entry for the player.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>INVALID_PARAM</li>
@@ -93,7 +93,7 @@ module.exports = {
      *  .then(entries => console.log(entries);
      * @param {string} name Name of the leaderboard.
      * @returns {Promise<number>} Number of entries.
-     * @throws {ErrorMessage} See error.message for details.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>INVALID_PARAM</li>
@@ -114,8 +114,8 @@ module.exports = {
      * @param {string} name Name of the leaderboard.
      * @param {number} count Number of entries to get.
      * @param {number} offset Offset from the first entry (top rank) to start the count from. Default is 0.
-     * @returns {Promise<LeaderboardEntry[]>} Resolves with the leaderboard entries that match the query.
-     * @throws {ErrorMessage} See error.message for details.
+     * @returns {Promise<leaderboardEntry[]>} Resolves with the leaderboard entries that match the query.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>INVALID_PARAM</li>
@@ -126,19 +126,4 @@ module.exports = {
     getConnectedPlayersEntriesAsync(name, count, offset) {
         return window.Wortal.leaderboard.getConnectedPlayersEntriesAsync(name, count, offset);
     }
-
-    /**
-     * @typedef Leaderboard
-     * @property {string} name Leaderboard's name.
-     * @property {string} contextId Context ID of the leaderboard, if one exists.
-     */
-
-    /**
-     * @typedef LeaderboardEntry
-     * @property {wortalPlayer} player Player who made this entry.
-     * @property {number} rank Where this entry ranks in the leaderboard.
-     * @property {string} formattedScore Formatted representation of the score;
-     * @property {number} timestamp When this entry was made.
-     * @property {string} details Optional details about this entry.
-     */
 }

@@ -64,6 +64,7 @@ cc.Class({
 
     log(msg) {
         this.txtLog.string = this.txtLog.string + "\n" + msg;
+        console.log(msg);
     },
 
     callInterstitial() {
@@ -98,13 +99,13 @@ cc.Class({
 
     callLeaderboardAdd() {
         wortal.leaderboard.sendEntryAsync("global", 100)
-            .then(entry => this.log("Leaderboard Score: " + entry.getScore()))
+            .then(entry => this.log("Leaderboard Score: " + entry.score))
             .catch(error => this.log(error));
     },
 
     callLeaderboardPlayer() {
         wortal.leaderboard.getPlayerEntryAsync("global")
-            .then(entry => this.log("Leaderboard Score: " + entry.getScore()))
+            .then(entry => this.log("Leaderboard Score: " + entry.score))
             .catch(error => this.log(error));
     },
 
