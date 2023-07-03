@@ -96,5 +96,55 @@ module.exports = {
      */
     logGameChoice(decision, choice) {
         window.Wortal.analytics.logGameChoice(decision, choice);
+    },
+
+    /**
+     * Logs the player's social invite.
+     * @example
+     * wortal.analytics.logSocialInvite('Leaderboard View');
+     * @param placement Placement of the invite.
+     */
+    logSocialInvite(placement) {
+        window.Wortal.analytics.logSocialInvite(placement);
+    },
+
+    /**
+     * Logs the player's social share.
+     * @example
+     * wortal.analytics.logSocialShare('Game Over UI');
+     * @param placement Placement of the share.
+     */
+    logSocialShare(placement) {
+        window.Wortal.analytics.logSocialShare(placement);
+    },
+
+    /**
+     * Logs the player's purchase of an in-app product.
+     * @example
+     * wortal.analytics.logPurchase('com.wortal.game.gems.100', '100 gems from shop sale');
+     * @param productID ID of the product the player purchased.
+     * @param details Additional details about the purchase.
+     * @throws {errorMessage} See error.message for more details.
+     * <ul>
+     * <li>INVALID_PARAM</li>
+     * </ul>
+     */
+    logPurchase(productID, details) {
+        window.Wortal.analytics.logPurchase(productID, details);
+    },
+
+    /**
+     * Logs the player's purchase of an in-app subscription.
+     * @example
+     * wortal.analytics.logPurchaseSubscription('com.wortal.game.seasonpass', 'Season pass from level up reward UI');
+     * @param productID ID of the subscription product the player purchased.
+     * @param details Additional details about the purchase.
+     * @throws {errorMessage} See error.message for more details.
+     * <ul>
+     * <li>INVALID_PARAM</li>
+     * </ul>
+     */
+    logPurchaseSubscription(productID, details) {
+        window.Wortal.analytics.logPurchaseSubscription(productID, details);
     }
 }
