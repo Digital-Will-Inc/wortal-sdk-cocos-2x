@@ -1,5 +1,5 @@
 /**
- * @typedef connectedPlayerPayload
+ * @typedef {object} connectedPlayerPayload
  * Payload options for players.
  * @property {number | undefined} cursor Specify where to start fetch the friend list. This parameter only applies when NEW_INVITATIONS_ONLY filter is used.
  * When not specified with NEW_INVITATIONS_ONLY filter, default cursor is 0.
@@ -13,7 +13,7 @@
  */
 
 /**
- * @typedef signedASID
+ * @typedef {object} signedASID
  * Represents app-scoped user id of current player along with a signature to verify that it indeed comes from Facebook.
  * @property {string} asid The ID of the player.
  * @property {string} signature

@@ -5,7 +5,7 @@ module.exports = {
      * wortal.leaderboard.getLeaderboardAsync('global')
      *  .then(leaderboard => console.log(leaderboard.name());
      * @param {string} name Name of the leaderboard.
-     * @returns {Promise<Leaderboard>} A promise that resolves with the matching leaderboard, rejecting if one is not found.
+     * @returns {Promise<leaderboard>} A promise that resolves with the matching leaderboard, rejecting if one is not found.
      * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
@@ -29,7 +29,7 @@ module.exports = {
      * @param {string} name Name of the leaderboard.
      * @param {number} score Score for the entry.
      * @param {string} details Optional additional details about the entry.
-     * @returns {Promise<LeaderboardEntry>} Resolves with the current leaderboard entry for the player after the update.
+     * @returns {Promise<leaderboardEntry>} Resolves with the current leaderboard entry for the player after the update.
      * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
@@ -53,7 +53,7 @@ module.exports = {
      * @param {string} name Name of the leaderboard.
      * @param {number} count Number of entries to get.
      * @param {number} offset Offset from the first entry (top rank) to start the count from. Default is 0.
-     * @returns {Promise<LeaderboardEntry[]>} Resolves with the leaderboard entries that match the query.
+     * @returns {Promise<leaderboardEntry[]>} Resolves with the leaderboard entries that match the query.
      * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
@@ -72,7 +72,7 @@ module.exports = {
      * wortal.leaderboard.getPlayerEntryAsync('global')
      *  .then(entry => console.log(entry.rank());
      * @param {string} name Name of the leaderboard.
-     * @returns {Promise<LeaderboardEntry>} Resolves with the current leaderboard entry for the player.
+     * @returns {Promise<leaderboardEntry>} Resolves with the current leaderboard entry for the player.
      * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
@@ -114,7 +114,7 @@ module.exports = {
      * @param {string} name Name of the leaderboard.
      * @param {number} count Number of entries to get.
      * @param {number} offset Offset from the first entry (top rank) to start the count from. Default is 0.
-     * @returns {Promise<LeaderboardEntry[]>} Resolves with the leaderboard entries that match the query.
+     * @returns {Promise<leaderboardEntry[]>} Resolves with the leaderboard entries that match the query.
      * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>

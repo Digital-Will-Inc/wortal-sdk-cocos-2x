@@ -1,5 +1,5 @@
 /**
- * @typedef errorMessage
+ * @typedef {object} errorMessage
  * Error message that is thrown by the SDK. Some messages are re-thrown from platform SDKs.
  * Error codes:
  *

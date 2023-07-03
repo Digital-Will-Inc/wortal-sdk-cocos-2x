@@ -1,5 +1,5 @@
 /**
- * @typedef invitePayload
+ * @typedef {object} invitePayload
  * Payload for context.inviteAsync. Defines the content to be sent in the invite.
  * @property {string} image Data URL of base64 encoded image to be displayed. This is required for the payload to be sent.
  * @property {string | localizableContent} text A text message, or an object with the default text as the value of 'default'
@@ -25,7 +25,7 @@
  */
 
 /**
- * @typedef choosePayload
+ * @typedef {object} choosePayload
  * Payload for context.chooseAsync. Defines the filters and search parameters to apply to the friend list.
  * @property {string | localizableContent | undefined} description Optional customizable text field in the share UI.
  * This can be used to describe the incentive a user can get from sharing.
@@ -40,7 +40,7 @@
  */
 
 /**
- * @typedef sharePayload
+ * @typedef {object} sharePayload
  * Payload for context.shareAsync. Defines the message to be sent to the context.
  * @property {string | localizableContent | undefined} cta Text of the call-to-action button.
  * @property {Record<string, unknown> | undefined} data Object passed to any session launched from this context message.
@@ -74,7 +74,7 @@
  */
 
 /**
- * @typedef updatePayload
+ * @typedef {object} updatePayload
  * Payload for context.updateAsync. Defines the message to be sent to the context.
  * @property {action | undefined} action Message format to be used. Not currently used.
  * @property {string | localizableContent | undefined} cta Text of the call-to-action button.
@@ -97,7 +97,7 @@
  */
 
 /**
- * @typedef linkSharePayload
+ * @typedef {object} linkSharePayload
  * Represents a custom link to be shared by the user.
  * @property {string | undefined} image A base64 encoded image to be shown for the link preview. The image is recommended to either be a square or of
  * the aspect ratio 1.91:1.
@@ -107,7 +107,7 @@
  */
 
 /**
- * @typedef localizableContent
+ * @typedef {object} localizableContent
  * Enable passing localizable content to API calls.
  * SDK will use the current player's locale for locale matching.
  * @property {string} default Text that will be used if a matching locale was not found.
@@ -115,7 +115,7 @@
  */
 
 /**
- * @typedef contextSizeResponse
+ * @typedef {object} contextSizeResponse
  * Response from context.isSizeBetween API. Contains the answer and the min and max size.
  * @property {boolean} answer
  * @property {number} maxSize
@@ -123,7 +123,7 @@
  */
 
 /**
- * @typedef inviteSection
+ * @typedef {object} inviteSection
  * Represents a section in the inviteAsync dialog that contains suggested matches. The sections will be shown in the
  * order they are included in the array, and the last section will contain as many results as possible.
  * @property {inviteSectionType} sectionType The type of section to include in the inviteAsync dialog.
@@ -133,14 +133,14 @@
  */
 
 /**
- * @typedef mediaParams
+ * @typedef {object} mediaParams
  * Represents the media payload used by custom update and custom share.
  * @property {mediaContent | undefined} gif URL of the gif to be displayed.
  * @property {mediaContent | undefined} video URL of the video to be displayed.
  */
 
 /**
- * @typedef mediaContent
+ * @typedef {object} mediaContent
  * Specifies the content for media.
  * @property {string} url
  */

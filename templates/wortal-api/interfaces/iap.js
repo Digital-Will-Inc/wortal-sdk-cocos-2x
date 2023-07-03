@@ -1,5 +1,5 @@
 /**
- * @typedef product
+ * @typedef {object} product
  * A product that the player can purchase.
  * @property {string} title Title of the product
  * @property {string} productID ID of the product
@@ -10,7 +10,7 @@
  */
 
 /**
- * @typedef purchase
+ * @typedef {object} purchase
  * A purchase transaction.
  * @property {string | undefined} developerPayload Optional payload assigned by game developer, which will be also attached in the signed purchase request
  * @property {string} paymentID ID of the payment (e.g. Google Play Order)
@@ -21,7 +21,7 @@
  */
 
 /**
- * @typedef purchaseConfig
+ * @typedef {object} purchaseConfig
  * Configuration for a purchase.
  * @property {string} productID ID of the product
  * @property {string | undefined} developerPayload Optional payload assigned by game developer, which will be also attached in the signed purchase request
