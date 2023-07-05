@@ -63,7 +63,7 @@ module.exports = {
     /**
      * Cancels all scheduled notifications.
      * @example
-     * Wortal.notifications.cancelAllAsync();
+     * wortal.notifications.cancelAllAsync();
      * @param label Optional label of the notification category to cancel. If this is used then only notifications with the
      * specified label will be cancelled.
      * @returns {Promise<boolean>} Promise that resolves true if all notifications were cancelled successfully, false otherwise.
