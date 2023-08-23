@@ -10,6 +10,8 @@ window.boot = function () {
         var progressBar = splash.querySelector('.progress-bar span');
         onProgress = function (finish, total) {
             var percent = 100 * finish / total;
+            // If using manual initialization, you should disable this call to Wortal. This will report loading progress based on
+            // the engine status, not the game itself loading. This is necessary for auto initialization to work.
             if (window.Wortal) {
                 window.Wortal.setLoadingProgress(percent);
             }

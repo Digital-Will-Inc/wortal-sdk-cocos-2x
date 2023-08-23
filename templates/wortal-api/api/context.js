@@ -16,13 +16,7 @@ module.exports = {
      * @example
      * const type = wortal.context.getType();
      * console.log(type);
-     * @returns {contextType} The type of the current context. Possible values:
-     * <ul>
-     * <li>SOLO - Default</li>
-     * <li>THREAD</li>
-     * <li>GROUP - Facebook only</li>
-     * <li>POST - Facebook only</li>
-     * </ul>
+     * @returns {contextType} The type of the current context.
      */
     getType() {
         return window.Wortal.context.getType();
@@ -30,7 +24,7 @@ module.exports = {
 
     /**
      * Gets an array of WortalPlayer objects containing information about active players in the current context
-     * (people who played the game in the current context in the last 90 days). This may include the current player.
+     * (people who played the game in the current context in the last 90 days).
      * @example
      * wortal.context.getPlayersAsync()
      *  .then(players => {
@@ -38,7 +32,7 @@ module.exports = {
      *    console.log(players[0].id);
      *    console.log(players[0].name);
      *    });
-     * @returns {Promise<wortalPlayer[]>} Array of players in the current context.
+     * @returns {Promise<wortalPlayer[]>} Promise that contains an array of players in the current context. This may include the current player.
      * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
@@ -59,7 +53,7 @@ module.exports = {
      * wortal.context.chooseAsync()
      *  .then(console.log(wortal.context.getId()));
      * @param {choosePayload} payload Object defining the options for the context choice.
-     * @returns {Promise<void>} A promise that resolves with an array of player IDs of the players that were invited.
+     * @returns {Promise<void>} Promise that resolves when the context is switched.
      * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
@@ -86,8 +80,10 @@ module.exports = {
      * resolve when the game has switched into the new context.</p>
      * @example
      * wortal.context.createAsync('player123');
-     * @param {string} playerId ID of player to create a context with.
-     * @returns {Promise<void>} A promise that resolves when the game has switched into the new context, or rejects otherwise.
+     * @param {string} playerId ID of player to create a context with. ID of player to create a context with, or a list
+     * of player IDs to create a context with. If not specified, a friend picker will be loaded to ask the player to
+     * create a context with friends to play with. Link and Viber will only accept a single, required player ID.
+     * @returns {Promise<void>} Promise that resolves when the game has switched into the new context, or rejects otherwise.
      * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
@@ -110,7 +106,7 @@ module.exports = {
      * @example
      * wortal.context.switchAsync('abc123');
      * @param {string} contextId ID of the context to switch to.
-     * @returns {Promise<void>} A promise that resolves when the game has switched into the specified context, or rejects otherwise.
+     * @returns {Promise<void>} Promise that resolves when the game has switched into the specified context, or rejects otherwise.
      * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
@@ -173,9 +169,10 @@ module.exports = {
      *     text: 'Share text',
      *     cta: 'Play',
      *     data: { exampleData: 'yourData' },
-     * }).then(result => console.log(result); // Contains shareCount with number of friends the share was sent to.
+     * }).then(result => console.log(result);
      * @param {sharePayload} payload Object defining the share message.
-     * @returns {Promise<number>} Number of friends the message was shared with. Facebook will return 0.
+     * @returns {Promise<number>} Promise that resolves when the platform's friend picker has closed. Includes number
+     * of friends the message was shared with. Facebook will always return 0.
      * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
@@ -222,6 +219,8 @@ module.exports = {
 
     /**
      * Posts an update to the current context. Will send a message to the chat thread of the current context.
+     * When players launch the game from this message, those game sessions will be able to access the specified blob
+     * of data through Wortal.session.getEntryPointData().
      * @example
      * wortal.context.updateAsync({
      *     image: 'data:base64image',
