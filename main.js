@@ -69,6 +69,5 @@ module.exports = {
 
     unload () {
         console.log("[Wortal] Extension disabled.");
-        //TODO: safely remove assets that were copied into project
     },
 };
