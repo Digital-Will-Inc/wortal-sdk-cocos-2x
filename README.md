@@ -8,6 +8,49 @@
 To use the <b>Wortal SDK</b> in your game, you must build with the <b>web-mobile</b> template.  This is included in the
 extension and handles all the necessary setup.
 
+## Initialization
+
+### Auto initialization
+
+By default, the SDK will initialize itself automatically. This is the recommended way to initialize the SDK.
+
+The SDK will be ready for use after `Wortal.isInitialized` returns `true`. It will also fire the `wortal-sdk-initialized` window event at this time.
+
+```javascript
+if (wortal.isInitialized()) {
+    // SDK is ready to use.
+}
+
+window.addEventListener('wortal-sdk-initialized', () => {
+    // SDK is ready to use.
+});
+```
+
+### Manual initialization
+
+Alternatively, you can initialize the SDK manually. This is useful if the game has large asset bundles that take some
+time to download. Follow these steps to enable manual initialization:
+
+1. Modify the `build-templates/web-mobile/index.html` file to set the `data-manual-init="true"` attribute on the SDK script tag:
+
+`<script src="https://storage.googleapis.com/html5gameportal.com/wortal-sdk/wortal-core-x.x.js" data-manual-init="true"></script>`
+
+2. Modify the `build-templates/web-mobile/main.js` file to comment out the loading progress reporting in the `onProgress` function.
+
+3. Call `wortal.initializeAsync()` as early as possible in your game's initialization code, then `wortal.startGameAsync()`
+   when your game has finished loading and is ready for play.
+
+4. Report the loading progress of the game in your initialization code. The game will not start until the loading progress reaches 100%.
+
+```typescript
+wortal.initializeAsync().then(() => {
+    // SDK is ready to use.
+    // Wait for game to finish loading.
+    wortal.setLoadingProgress(100);
+    wortal.startGameAsync();
+});
+```
+
 ## How to Use
 
 ### Ads
@@ -183,4 +226,30 @@ wortal.session.getEntryPointAsync()
 // providing a reward for players who were invited to play.
 const data = wortal.session.getEntryPointData();
 console.log(data);
+```
+
+### Tournament
+
+[API Reference](https://sdk.html5gameportal.com/api/tournament/)
+
+The Tournament API is used to create and manage tournaments for your game.
+
+```typescript
+// Create a tournament.
+const payload = {
+    initialScore: 100,
+    config: {
+        title: "Level 1 Tournament",
+    },
+    data: {
+        level: 1,
+    },
+};
+
+wortal.tournament.createAsync(payload)
+    .then(tournament => console.log(tournament.payload["level"]));
+
+// Post a score to a tournament.
+wortal.tournament.postScoreAsync(200)
+    .then(() => console.log("Score posted!"));
 ```
