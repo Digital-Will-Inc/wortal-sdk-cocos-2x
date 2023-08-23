@@ -6,6 +6,7 @@ import * as leaderboard from './api/leaderboard';
 import * as notifications from './api/notifications';
 import * as player from './api/player';
 import * as session from './api/session';
+import * as tournament from './api/tournament';
 
 module.exports = {
     /** Ads API */
@@ -24,6 +25,8 @@ module.exports = {
     player,
     /** Session API */
     session,
+    /** Tournament API */
+    tournament,
 
     /**
      * Sets a callback which will be invoked when the app is brought to the background.
