@@ -138,7 +138,7 @@ module.exports = {
      * <li>NOT_SUPPORTED</li>
      * </ul>
      */
-    switchGameAsync(gameID, data?) {
+    switchGameAsync(gameID, data) {
         return window.Wortal.session.switchGameAsync(gameID, data);
     }
 }
