@@ -87,6 +87,23 @@ module.exports = {
     },
 
     /**
+     * Sets the loading progress value for the game. This is required for the game to start. Failure to call this with 100
+     * once the game is fully loaded will prevent the game from starting.
+     * @example
+     * onGameLoadProgress(percent) {
+     *     wortal.setLoadingProgress(percent);
+     * }
+     *
+     * onGameLoaded() {
+     *     wortal.setLoadingProgress(100);
+     * }
+     * @param value Percentage of loading complete. Range is 0 to 100.
+     */
+    setLoadingProgress(value) {
+        window.Wortal.setLoadingProgress(value);
+    },
+
+    /**
      * Sets a callback which will be invoked when the app is brought to the background.
      * @param callback Callback to invoke.
      */
