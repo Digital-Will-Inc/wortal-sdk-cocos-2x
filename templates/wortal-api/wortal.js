@@ -55,7 +55,7 @@ module.exports = {
      * <li>NOT_SUPPORTED</li>
      * </ul>
      */
-    async initializeAsync() {
+    initializeAsync() {
         return window.Wortal.initializeAsync();
     },
 
@@ -82,7 +82,7 @@ module.exports = {
      * <li>NOT_SUPPORTED</li>
      * </ul>
      */
-    async startGameAsync() {
+    startGameAsync() {
         return window.Wortal.startGameAsync();
     },
 
