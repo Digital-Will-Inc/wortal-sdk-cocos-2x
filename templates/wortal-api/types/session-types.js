@@ -6,6 +6,10 @@
  * - 'viber'
  * - 'gd'
  * - 'facebook'
+ * - 'crazygames'
+ * - 'gamepix'
+ * - 'telegram'
+ * - 'gamemonetize'
  * - 'debug'
  */
 
@@ -15,6 +19,7 @@
  * - 'IOS'
  * - 'ANDROID'
  * - 'DESKTOP'
+ * - 'WEB'
  */
 
 /**
