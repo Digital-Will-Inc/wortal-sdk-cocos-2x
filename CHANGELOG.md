@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Core
   - Compatibility with Wortal 2.0
+  - Add Achievements API
+  - Add Stats API
 - Ads
   - Support for ads on Telegram
 
