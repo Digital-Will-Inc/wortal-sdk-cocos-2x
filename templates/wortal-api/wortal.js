@@ -7,6 +7,7 @@ import * as leaderboard from './api/leaderboard';
 import * as notifications from './api/notifications';
 import * as player from './api/player';
 import * as session from './api/session';
+import * as stats from './api/stats';
 import * as tournament from './api/tournament';
 
 module.exports = {
@@ -28,6 +29,8 @@ module.exports = {
     player,
     /** Session API */
     session,
+    /** Stats API */
+    stats,
     /** Tournament API */
     tournament,
 
