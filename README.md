@@ -10,39 +10,12 @@ extension and handles all the necessary setup.
 
 ## Initialization
 
-### Auto initialization
-
-By default, the SDK will initialize itself automatically. This is the recommended way to initialize the SDK.
-
-The SDK will be ready for use after `Wortal.isInitialized` returns `true`. It will also fire the `wortal-sdk-initialized` window event at this time.
-
-```javascript
-if (wortal.isInitialized()) {
-    // SDK is ready to use.
-}
-
-window.addEventListener('wortal-sdk-initialized', () => {
-    // SDK is ready to use.
-});
-```
-
-### Manual initialization
-
-Alternatively, you can initialize the SDK manually. This is useful if the game has large asset bundles that take some
-time to download. Follow these steps to enable manual initialization:
-
-1. Modify the `build-templates/web-mobile/index.html` file to set the `data-manual-init="true"` attribute on the SDK script tag:
-
-`<script src="https://storage.googleapis.com/html5gameportal.com/wortal-sdk/wortal-core-x.x.js" data-manual-init="true"></script>`
-
-2. Modify the `build-templates/web-mobile/main.js` file to comment out the loading progress reporting in the `onProgress` function.
-
-3. Call `wortal.initializeAsync()` as early as possible in your game's initialization code, then `wortal.startGameAsync()`
+1. Call `wortal.initializeAsync()` as early as possible in your game's initialization code, then `wortal.startGameAsync()`
    when your game has finished loading and is ready for play.
 
-4. Report the loading progress of the game in your initialization code. The game will not start until the loading progress reaches 100%.
+2. Report the loading progress of the game in your initialization code. The game will not start until the loading progress reaches 100%.
 
-```typescript
+```javascript
 wortal.initializeAsync().then(() => {
     // SDK is ready to use.
     // Wait for game to finish loading.
@@ -55,7 +28,7 @@ wortal.initializeAsync().then(() => {
 
 ### Ads
 
-[API Reference](https://sdk.html5gameportal.com/api/ads/)
+[API Reference](https://docs.games-api.ai/api/ads/)
 
 Interstitial ads can be shown at various points in the game such as a level end, restart or a timed
 interval in games with longer levels.
@@ -88,7 +61,7 @@ wortal.ads.showRewarded('ReviveAndContinue', pauseAudio, resumeAudio, endGame, c
 
 ### Analytics
 
-[API Reference](https://sdk.html5gameportal.com/api/analytics/)
+[API Reference](https://docs.games-api.ai/api/analytics/)
 
 The Analytics API can be used to track game events that can help better understand how players are interacting with
 the game. This data will be available for viewing in the Wortal dashboard.
@@ -106,9 +79,25 @@ wortal.analytics.logLevelEnd('Level 3', '100', true);
 wortal.analytics.logGameChoice('Character', 'Blue');
 ```
 
+### Achievements
+
+[API Reference](https://docs.games-api.ai/api/achievements/)
+
+The Achievements API is used to track the player's progress in the game and reward them for completing tasks.
+
+```javascript
+// Unlock an achievement.
+wortal.achievements.unlockAchievementAsync('achievementID')
+    .then(() => console.log("Achievement unlocked!"));
+
+// Get the player's achievements progress.
+wortal.achievements.getAchievementsAsync()
+    .then(achievements => console.log(achievements));
+```
+
 ### Context
 
-[API Reference](https://sdk.html5gameportal.com/api/context/)
+[API Reference](https://docs.games-api.ai/api/context/)
 
 The Context API is used to connect players and allow them to interact in the game session, share their content
 and send messages to each other.
@@ -133,7 +122,7 @@ wortal.context.shareAsync({
 
 ### In-App Purchases
 
-[API Reference](https://sdk.html5gameportal.com/api/iap/)
+[API Reference](https://docs.games-api.ai/api/iap/)
 
 The In-App Purchases (IAP) API is used to provide an interface for in-game transactions on the platforms.
 This process will differ based on what platform the game is being played on, but the API remains the same.
@@ -151,7 +140,7 @@ wortal.iap.makePurchaseAsync({
 
 ### Leaderboards
 
-[API Reference](https://sdk.html5gameportal.com/api/leaderboard/)
+[API Reference](https://docs.games-api.ai/api/leaderboard/)
 
 The Leaderboard API gives the game access to the platform's leaderboard functionality. This is where
 you can track player's scores and compare them to other players.
@@ -167,7 +156,7 @@ wortal.leaderboard.sendEntryAsync('global', 100);
 
 ### Notifications
 
-[API Reference](https://sdk.html5gameportal.com/api/notifications/)
+[API Reference](https://docs.games-api.ai/api/notifications/)
 
 The Notifications API is used to send notifications to the player. These can be used to notify the player
 of an event in the game or to remind them to come back and play.
@@ -193,7 +182,7 @@ wortal.notifications.cancelAsync('notification-id-123')
 
 ### Player
 
-[API Reference](https://sdk.html5gameportal.com/api/player/)
+[API Reference](https://docs.games-api.ai/api/player/)
 
 You can find details about the current player via the Player API.
 
@@ -211,7 +200,7 @@ wortal.player.getConnectedPlayersAsync({
 
 ### Session
 
-[API Reference](https://sdk.html5gameportal.com/api/session/)
+[API Reference](https://docs.games-api.ai/api/session/)
 
 Details about the current session can be accessed in the Session API.
 
@@ -228,13 +217,29 @@ const data = wortal.session.getEntryPointData();
 console.log(data);
 ```
 
+### Stats
+
+[API Reference](https://docs.games-api.ai/api/stats/)
+
+Track stats for players and record their high scores with the Stats API.
+
+```javascript
+// Get the player's high score for the level.
+wortal.stats.getStatsAsync("level1")
+    .then(stats => console.log(stats.value));
+
+// Set the player's high score for the game.
+wortal.stats.postStatsAsync("level1", 1000)
+    .then(() => console.log("High score set!"));
+```
+
 ### Tournament
 
-[API Reference](https://sdk.html5gameportal.com/api/tournament/)
+[API Reference](https://docs.games-api.ai/api/tournament/)
 
 The Tournament API is used to create and manage tournaments for your game.
 
-```typescript
+```javascript
 // Create a tournament.
 const payload = {
     initialScore: 100,
