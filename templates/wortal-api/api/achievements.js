@@ -10,8 +10,8 @@ module.exports = {
      *          }
      *      }
      *   });
-     * @returns {Promise<Achievement[]>} Promise that resolves to an array of achievements.
-     * @throws {ErrorMessage} See error.message for details.
+     * @returns {Promise<achievement[]>} Promise that resolves to an array of achievements.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * </ul>
@@ -33,7 +33,7 @@ module.exports = {
      *    }
      *  });
      * @returns {Promise<boolean>} Promise that resolves to true if the achievement was unlocked, false if it was already unlocked.
-     * @throws {ErrorMessage} See error.message for details.
+     * @throws {errorMessage} See error.message for details.
      * <ul>
      * <li>NOT_SUPPORTED</li>
      * <li>INVALID_PARAMS</li>
