@@ -1,3 +1,4 @@
+import * as achievements from './api/achievements';
 import * as ads from './api/ads';
 import * as analytics from './api/analytics';
 import * as context from './api/context';
@@ -9,6 +10,8 @@ import * as session from './api/session';
 import * as tournament from './api/tournament';
 
 module.exports = {
+    /** Achievements API */
+    achievements,
     /** Ads API */
     ads,
     /** Analytics API */
