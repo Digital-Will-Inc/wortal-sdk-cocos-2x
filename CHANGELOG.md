@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.0] - 2024-09-09
+###
+- Ad
+  - Add isEnabled
+
 ## [3.0.0] - 2024-05-15
 ### BREAKING CHANGE
 - Auto initialization has been removed. You must now call Wortal.initializeAsync() and Wortal.startGameAsync() manually to initialize the SDK.
@@ -11,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Core
   - Compatibility with Wortal 2.0
+  - Add Achievements API
+  - Add Stats API
 - Ads
   - Support for ads on Telegram
 
