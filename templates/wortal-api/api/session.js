@@ -1,5 +1,30 @@
 module.exports = {
     /**
+     * Tracks the start of a gameplay session, including resuming play after a break.
+     * Call whenever the player starts playing or resumes playing after a break
+     * (menu/loading/achievement screen, game paused, etc.).
+     * @example
+     * // Player closes in-game menu and resumes playing
+     * Wortal.session.gameplayStart();
+     */
+    gameplayStart()
+    {
+        window.Wortal.session.gameplayStart();
+    },
+
+    /**
+     * Tracks the end of a gameplay session, including pausing play or opening a menu.
+     * Call on every game break (entering a menu, switching level, pausing the game, ...)
+     * @example
+     * // Player opens in-game menu
+     * Wortal.session.gameplayStop();
+     */
+    gameplayStop()
+    {
+        window.Wortal.session.gameplayStop();
+    },
+
+    /**
      * Returns any data object associated with the entry point that the game was launched from.
      *
      * The contents of the object are developer-defined, and can occur from entry points on different platforms.
@@ -9,7 +34,8 @@ module.exports = {
      * console.log(data.property);
      * @returns {Record<string, unknown>} Data about the entry point or an empty object if none exists.
      */
-    getEntryPointData() {
+    getEntryPointData()
+    {
         return window.Wortal.session.getEntryPointData();
     },
 
@@ -25,7 +51,8 @@ module.exports = {
      * <li>RETHROW_FROM_PLATFORM</li>
      * </ul>
      */
-    getEntryPointAsync() {
+    getEntryPointAsync()
+    {
         return window.Wortal.session.getEntryPointAsync();
     },
 
@@ -41,7 +68,8 @@ module.exports = {
      * });
      * @param {Record<string, unknown>} data Data to set.
      */
-    setSessionData(data) {
+    setSessionData(data)
+    {
         return window.Wortal.session.setSessionData(data);
     },
 
@@ -51,7 +79,8 @@ module.exports = {
      * const lang = wortal.session.getLocale();
      * @returns {string} Locale in [BCP47](http://www.ietf.org/rfc/bcp/bcp47.txt) format.
      */
-    getLocale() {
+    getLocale()
+    {
         return window.Wortal.session.getLocale();
     },
 
@@ -64,7 +93,8 @@ module.exports = {
      * console.log(source['utm_source']);
      * @returns {trafficSource} URL parameters attached to the game.
      */
-    getTrafficSource() {
+    getTrafficSource()
+    {
         window.Wortal.session.getTrafficSource();
     },
 
@@ -76,7 +106,8 @@ module.exports = {
      * console.log(platform);
      * @returns {platform} Platform the game is running on.
      */
-    getPlatform() {
+    getPlatform()
+    {
         return window.Wortal.session.getPlatform();
     },
 
@@ -87,7 +118,8 @@ module.exports = {
      * console.log(device);
      * @returns {device} Device the player is using.
      */
-    getDevice() {
+    getDevice()
+    {
         return window.Wortal.session.getDevice();
     },
 
@@ -100,7 +132,8 @@ module.exports = {
      * }
      * @returns {orientation} Orientation of the device the player is using.
      */
-    getOrientation() {
+    getOrientation()
+    {
         return window.Wortal.session.getOrientation();
     },
 
@@ -114,8 +147,10 @@ module.exports = {
      * });
      * @param callback Callback to be invoked when the orientation of the device changes.
      */
-    onOrientationChange(callback) {
-        window.Wortal.session.onOrientationChange(orientation => {
+    onOrientationChange(callback)
+    {
+        window.Wortal.session.onOrientationChange(orientation =>
+        {
             callback(orientation);
         });
     },
@@ -138,7 +173,41 @@ module.exports = {
      * <li>NOT_SUPPORTED</li>
      * </ul>
      */
-    switchGameAsync(gameID, data) {
+    switchGameAsync(gameID, data)
+    {
         return window.Wortal.session.switchGameAsync(gameID, data);
-    }
+    },
+
+    /**
+    *Returns whether the audio is enabled for the player.
+    * @returns {boolean} True if audio is enabled, false if it is disabled.
+    */
+    isAudioEnabled()
+    {
+        return window.Wortal.session.isAudioEnabled();
+    },
+
+    /**
+     * Assigns a callback to be invoked when the audio status of the player changes.
+     * @param callback Callback to be invoked when the audio status of the player changes.
+     */
+    onAudioStatusChange(callback)
+    {
+        window.Wortal.session.onAudioStatusChange(status =>
+        {
+            callback(status);
+        })
+    },
+
+    /**
+     * The happyTimeAsync method can be called on various player achievements (beating a boss, reaching a high score, etc.).
+     * It makes the website celebrate (for example by launching some confetti).
+     * @example
+     * // Player defeats a boss
+     * Wortal.session.happyTime();
+     */
+    happyTime()
+    {
+        window.Wortal.session.happyTime();
+    },
 }

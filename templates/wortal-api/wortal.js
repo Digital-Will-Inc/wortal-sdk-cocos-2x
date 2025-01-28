@@ -37,7 +37,8 @@ module.exports = {
     /**
      * Returns true if the SDK Core has been initialized.
      */
-    isInitialized() {
+    isInitialized()
+    {
         return window.Wortal.isInitialized;
     },
 
@@ -61,7 +62,8 @@ module.exports = {
      * <li>NOT_SUPPORTED</li>
      * </ul>
      */
-    initializeAsync() {
+    initializeAsync()
+    {
         return window.Wortal.initializeAsync();
     },
 
@@ -88,7 +90,8 @@ module.exports = {
      * <li>NOT_SUPPORTED</li>
      * </ul>
      */
-    startGameAsync() {
+    startGameAsync()
+    {
         return window.Wortal.startGameAsync();
     },
 
@@ -105,7 +108,8 @@ module.exports = {
      * }
      * @param value Percentage of loading complete. Range is 0 to 100.
      */
-    setLoadingProgress(value) {
+    setLoadingProgress(value)
+    {
         window.Wortal.setLoadingProgress(value);
     },
 
@@ -113,8 +117,22 @@ module.exports = {
      * Sets a callback which will be invoked when the app is brought to the background.
      * @param callback Callback to invoke.
      */
-    onPause(callback) {
-        window.Wortal.onPause(() => {
+    onPause(callback)
+    {
+        window.Wortal.onPause(() =>
+        {
+            callback();
+        });
+    },
+
+    /**
+     * Sets a callback which will be invoked when the app is brought to the foreground.
+     * @param callback Callback to invoke.
+     */
+    onResume(callback)
+    {
+        window.Wortal.onResume(() =>
+        {
             callback();
         });
     },
@@ -129,7 +147,8 @@ module.exports = {
      * <li>INVALID_OPERATION</li>
      * </ul>
      */
-    performHapticFeedbackAsync() {
+    performHapticFeedbackAsync()
+    {
         return window.Wortal.performHapticFeedbackAsync();
     },
 
@@ -142,7 +161,8 @@ module.exports = {
      * }
      * @returns {string[]} Array of supported APIs.
      */
-    getSupportedAPIs() {
+    getSupportedAPIs()
+    {
         return window.Wortal.getSupportedAPIs();
     }
 }
