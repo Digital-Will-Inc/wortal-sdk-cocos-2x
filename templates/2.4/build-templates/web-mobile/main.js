@@ -1,46 +1,56 @@
-window.boot = function () {
+window.boot = function ()
+{
     var settings = window._CCSettings;
     window._CCSettings = undefined;
     var onProgress = null;
 
     let { RESOURCES, INTERNAL, MAIN, START_SCENE } = cc.AssetManager.BuiltinBundleName;
-    function setLoadingDisplay () {
+    function setLoadingDisplay()
+    {
         // Loading splash scene
         var splash = document.getElementById('splash');
         var progressBar = splash.querySelector('.progress-bar span');
-        onProgress = function (finish, total) {
+        onProgress = function (finish, total)
+        {
             var percent = 100 * finish / total;
             // If using manual initialization, you should disable this call to Wortal. This will report loading progress based on
             // the engine status, not the game itself loading. This is necessary for auto initialization to work.
-            if (window.Wortal) {
-                window.Wortal.setLoadingProgress(percent);
-            }
-            if (progressBar) {
+            // if (window.Wortal) {
+            //     window.Wortal.setLoadingProgress(percent);
+            // }
+            if (progressBar)
+            {
                 progressBar.style.width = percent.toFixed(2) + '%';
             }
         };
         splash.style.display = 'block';
         progressBar.style.width = '0%';
 
-        cc.director.once(cc.Director.EVENT_AFTER_SCENE_LAUNCH, function () {
+        cc.director.once(cc.Director.EVENT_AFTER_SCENE_LAUNCH, function ()
+        {
             splash.style.display = 'none';
         });
     }
 
-    var onStart = function () {
+    var onStart = function ()
+    {
 
         cc.view.enableRetina(true);
         cc.view.resizeWithBrowserSize(true);
 
-        if (cc.sys.isBrowser) {
+        if (cc.sys.isBrowser)
+        {
             setLoadingDisplay();
         }
 
-        if (cc.sys.isMobile) {
-            if (settings.orientation === 'landscape') {
+        if (cc.sys.isMobile)
+        {
+            if (settings.orientation === 'landscape')
+            {
                 cc.view.setOrientation(cc.macro.ORIENTATION_LANDSCAPE);
             }
-            else if (settings.orientation === 'portrait') {
+            else if (settings.orientation === 'portrait')
+            {
                 cc.view.setOrientation(cc.macro.ORIENTATION_PORTRAIT);
             }
             cc.view.enableAutoFullScreen([
@@ -55,26 +65,32 @@ window.boot = function () {
         // Limit downloading max concurrent task to 2,
         // more tasks simultaneously may cause performance draw back on some android system / browsers.
         // You can adjust the number based on your own test result, you have to set it before any loading process to take effect.
-        if (cc.sys.isBrowser && cc.sys.os === cc.sys.OS_ANDROID) {
+        if (cc.sys.isBrowser && cc.sys.os === cc.sys.OS_ANDROID)
+        {
             cc.assetManager.downloader.maxConcurrency = 2;
             cc.assetManager.downloader.maxRequestsPerFrame = 2;
         }
 
         var launchScene = settings.launchScene;
-        var bundle = cc.assetManager.bundles.find(function (b) {
+        var bundle = cc.assetManager.bundles.find(function (b)
+        {
             return b.getSceneInfo(launchScene);
         });
 
         bundle.loadScene(launchScene, null, onProgress,
-            function (err, scene) {
-                if (!err) {
+            function (err, scene)
+            {
+                if (!err)
+                {
                     cc.director.runSceneImmediate(scene);
-                    if (cc.sys.isBrowser) {
+                    if (cc.sys.isBrowser)
+                    {
                         // show canvas
                         var canvas = document.getElementById('GameCanvas');
                         canvas.style.visibility = '';
                         var div = document.getElementById('GameDiv');
-                        if (div) {
+                        if (div)
+                        {
                             div.style.backgroundImage = '';
                         }
                         console.log('Success to load scene: ' + launchScene);
@@ -105,35 +121,43 @@ window.boot = function () {
     settings.hasResourcesBundle && bundleRoot.push(RESOURCES);
 
     var count = 0;
-    function cb (err) {
+    function cb(err)
+    {
         if (err) return console.error(err.message, err.stack);
         count++;
-        if (count === bundleRoot.length + 1) {
+        if (count === bundleRoot.length + 1)
+        {
             cc.game.run(option, onStart);
         }
     }
 
-    cc.assetManager.loadScript(settings.jsList.map(function (x) { return 'src/' + x;}), cb);
+    cc.assetManager.loadScript(settings.jsList.map(function (x) { return 'src/' + x; }), cb);
 
-    for (let i = 0; i < bundleRoot.length; i++) {
+    for (let i = 0; i < bundleRoot.length; i++)
+    {
         cc.assetManager.loadBundle(bundleRoot[i], cb);
     }
 };
 
-if (window.jsb) {
+if (window.jsb)
+{
     var isRuntime = (typeof loadRuntime === 'function');
-    if (isRuntime) {
+    if (isRuntime)
+    {
         require('src/settings.js');
         require('src/cocos2d-runtime.js');
-        if (CC_PHYSICS_BUILTIN || CC_PHYSICS_CANNON) {
+        if (CC_PHYSICS_BUILTIN || CC_PHYSICS_CANNON)
+        {
             require('src/physics.js');
         }
         require('jsb-adapter/engine/index.js');
     }
-    else {
+    else
+    {
         require('src/settings.js');
         require('src/cocos2d-jsb.js');
-        if (CC_PHYSICS_BUILTIN || CC_PHYSICS_CANNON) {
+        if (CC_PHYSICS_BUILTIN || CC_PHYSICS_CANNON)
+        {
             require('src/physics.js');
         }
         require('jsb-adapter/jsb-engine.js');
